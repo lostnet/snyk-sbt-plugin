@@ -21,7 +21,7 @@ describe('version test', () => {
       jest.spyOn(subProcess, 'execute').mockResolvedValue(`
 sbt version in this project: 1.5.5
 sbt script version: 1.5.5
-`);
+`.split('\n'));
       const received = await getSbtVersion(root, '');
       expect(received).toBe('1.5.5');
     });

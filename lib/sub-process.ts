@@ -23,7 +23,7 @@ export const execute = (
 
   return new Promise((resolve, reject) => {
     const out = {
-      stdout: [],
+      stdout: [""],
       stderr: '',
     };
 
@@ -33,7 +33,7 @@ export const execute = (
     }
 
     proc.stdout.on('data', (data) => {
-      const strData = data.toString();
+      const strData = out.stdout.pop() + data.toString();
       strData.split('\n').forEach((str) => {
 	out.stdout.push(str)
         debugLogging(str);
